@@ -111,28 +111,44 @@ renderProjects();
    ============================================================ */
 const CERTIFICATES = [
   {
-    title: "Security, Compliance, and Identity Fundamentals",
-    issuer: "Microsoft",
-    date: "2026-09-01",
-    certificateNumber: "[INSERT CERTIFICATE NUMBER]",
+    title: "Microsoft Cybersecurity Course: Security, Compliance, and Identity Fundamentals",
+    issuer: "TESDA",
+    date: "2026-08-30",
+    certificateNumber: "ktJqUHixO0",
     verificationUrl: "https://example.com/verify/CERTIFICATE-ID",
-    certificateFile: "certificates/certificate-01.pdf"
+    certificateFile: "certificates/Certificate_of_Completion,%20tesda.pdf"
   },
   {
-    title: "[Certificate Title]",
-    issuer: "[Issuing Organization]",
-    date: "2026-01-01",
+    title: "Networking Basics",
+    issuer: "Cisco Networking Academy",
+    date: "2026-02-17",
     certificateNumber: "[INSERT CERTIFICATE NUMBER]",
     verificationUrl: "https://example.com/verify/CERTIFICATE-ID",
-    certificateFile: "certificates/certificate-02.pdf"
+    certificateFile: "certificates/Networking_Basics_certificate.pdf"
   },
   {
-    title: "[Certificate Title]",
-    issuer: "[Issuing Organization]",
-    date: "2025-11-01",
+    title: "Introduction to Cybersecurity",
+    issuer: "Cisco Networking Academy",
+    date: "2026-01-23",
     certificateNumber: "[INSERT CERTIFICATE NUMBER]",
     verificationUrl: "https://example.com/verify/CERTIFICATE-ID",
-    certificateFile: "certificates/certificate-03.pdf"
+    certificateFile: "certificates/Introduction_to_Cybersecurity_certificate.pdf"
+  },
+  {
+    title: "Cyber Threat Management",
+    issuer: "Cisco Networking Academy",
+    date: "2026-01-22",
+    certificateNumber: "[INSERT CERTIFICATE NUMBER]",
+    verificationUrl: "https://example.com/verify/CERTIFICATE-ID",
+    certificateFile: "certificates/Cyber_Threat_Management_certificate.pdf"
+  },
+  {
+    title: "Information Technology Specialist — Network Security",
+    issuer: "Certiport",
+    date: "2025-12-08",
+    certificateNumber: "wn8Cz-48eN",
+    verificationUrl: "https://example.com/verify/CERTIFICATE-ID",
+    certificateFile: "certificates/Information%20Technology%20Specialist.pdf"
   }
 ];
 
