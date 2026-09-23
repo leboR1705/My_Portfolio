@@ -116,7 +116,8 @@ const CERTIFICATES = [
     date: "2026-08-30",
     certificateNumber: "ktJqUHixO0",
     verificationUrl: "https://example.com/verify/CERTIFICATE-ID",
-    certificateFile: "certificates/Certificate_of_Completion,%20tesda.pdf"
+    certificateFile: "certificates/Certificate_of_Completion,%20tesda.pdf",
+    logo: "images/TESDA_Seal.svg.webp"
   },
   {
     title: "Networking Basics",
@@ -124,7 +125,8 @@ const CERTIFICATES = [
     date: "2026-02-17",
     certificateNumber: "[INSERT CERTIFICATE NUMBER]",
     verificationUrl: "https://example.com/verify/CERTIFICATE-ID",
-    certificateFile: "certificates/Networking_Basics_certificate.pdf"
+    certificateFile: "certificates/Networking_Basics_certificate.pdf",
+    logo: "images/Cisco_academy_logo.svg.webp"
   },
   {
     title: "Introduction to Cybersecurity",
@@ -132,7 +134,8 @@ const CERTIFICATES = [
     date: "2026-01-23",
     certificateNumber: "[INSERT CERTIFICATE NUMBER]",
     verificationUrl: "https://example.com/verify/CERTIFICATE-ID",
-    certificateFile: "certificates/Introduction_to_Cybersecurity_certificate.pdf"
+    certificateFile: "certificates/Introduction_to_Cybersecurity_certificate.pdf",
+    logo: "images/Cisco_academy_logo.svg.webp"
   },
   {
     title: "Cyber Threat Management",
@@ -140,7 +143,8 @@ const CERTIFICATES = [
     date: "2026-01-22",
     certificateNumber: "[INSERT CERTIFICATE NUMBER]",
     verificationUrl: "https://example.com/verify/CERTIFICATE-ID",
-    certificateFile: "certificates/Cyber_Threat_Management_certificate.pdf"
+    certificateFile: "certificates/Cyber_Threat_Management_certificate.pdf",
+    logo: "images/Cisco_academy_logo.svg.webp"
   },
   {
     title: "Information Technology Specialist — Network Security",
@@ -148,7 +152,8 @@ const CERTIFICATES = [
     date: "2025-12-08",
     certificateNumber: "wn8Cz-48eN",
     verificationUrl: "https://example.com/verify/CERTIFICATE-ID",
-    certificateFile: "certificates/Information%20Technology%20Specialist.pdf"
+    certificateFile: "certificates/Information%20Technology%20Specialist.pdf",
+    logo: "images/Certiport_Logo.jpg"
   }
 ];
 
@@ -200,7 +205,9 @@ function renderCertificates(){
     <article class="cert-card">
       <div class="cert-thumb">
         <span class="cert-org-badge">${c.issuer}</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7l-9-5Z"/></svg>
+        ${c.logo
+          ? `<img class="cert-logo" src="${c.logo}" alt="${c.issuer} logo">`
+          : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7l-9-5Z"/></svg>`}
       </div>
       <div class="cert-body">
         <h3>${c.title}</h3>
