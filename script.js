@@ -123,7 +123,7 @@ const CERTIFICATES = [
     title: "Networking Basics",
     issuer: "Cisco Networking Academy",
     date: "2026-02-17",
-    certificateNumber: "[INSERT CERTIFICATE NUMBER]",
+    certificateNumber: "N/A",
     verificationUrl: "https://example.com/verify/CERTIFICATE-ID",
     certificateFile: "certificates/Networking_Basics_certificate.pdf",
     logo: "images/Cisco_academy_logo.svg.webp"
@@ -132,7 +132,7 @@ const CERTIFICATES = [
     title: "Introduction to Cybersecurity",
     issuer: "Cisco Networking Academy",
     date: "2026-01-23",
-    certificateNumber: "[INSERT CERTIFICATE NUMBER]",
+    certificateNumber: "N/A",
     verificationUrl: "https://example.com/verify/CERTIFICATE-ID",
     certificateFile: "certificates/Introduction_to_Cybersecurity_certificate.pdf",
     logo: "images/Cisco_academy_logo.svg.webp"
@@ -141,7 +141,7 @@ const CERTIFICATES = [
     title: "Cyber Threat Management",
     issuer: "Cisco Networking Academy",
     date: "2026-01-22",
-    certificateNumber: "[INSERT CERTIFICATE NUMBER]",
+    certificateNumber: "N/A",
     verificationUrl: "https://example.com/verify/CERTIFICATE-ID",
     certificateFile: "certificates/Cyber_Threat_Management_certificate.pdf",
     logo: "images/Cisco_academy_logo.svg.webp"
@@ -151,7 +151,7 @@ const CERTIFICATES = [
     issuer: "Certiport",
     date: "2025-12-08",
     certificateNumber: "wn8Cz-48eN",
-    verificationUrl: "https://example.com/verify/CERTIFICATE-ID",
+    verificationUrl: "https://www.certiport.com/portal/pages/credentialverification.aspx",
     certificateFile: "certificates/Information%20Technology%20Specialist.pdf",
     logo: "images/Certiport_Logo.jpg"
   }
