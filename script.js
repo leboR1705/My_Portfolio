@@ -56,7 +56,7 @@ const PROJECTS = [
     tech: ["Python", "Django", "PostgreSQL", "OpenCV"],
     liveUrl: "",
     githubUrl: "",
-    featured: true
+    featured: false
   },
   {
     title: "[Project Title]",
@@ -115,7 +115,7 @@ const CERTIFICATES = [
     issuer: "TESDA",
     date: "2026-08-30",
     certificateNumber: "ktJqUHixO0",
-    verificationUrl: "https://example.com/verify/CERTIFICATE-ID",
+    verificationUrl: "https://tesda.gov.ph/Rwac",
     certificateFile: "certificates/Certificate_of_Completion,%20tesda.pdf",
     logo: "images/TESDA_Seal.svg.webp"
   },
@@ -124,7 +124,7 @@ const CERTIFICATES = [
     issuer: "Cisco Networking Academy",
     date: "2026-02-17",
     certificateNumber: "N/A",
-    verificationUrl: "https://example.com/verify/CERTIFICATE-ID",
+    verificationUrl: "https://cp.certmetrics.com/cisco/en/public/verify/credential",
     certificateFile: "certificates/Networking_Basics_certificate.pdf",
     logo: "images/Cisco_academy_logo.svg.webp"
   },
@@ -133,7 +133,7 @@ const CERTIFICATES = [
     issuer: "Cisco Networking Academy",
     date: "2026-01-23",
     certificateNumber: "N/A",
-    verificationUrl: "https://example.com/verify/CERTIFICATE-ID",
+    verificationUrl: "https://cp.certmetrics.com/cisco/en/public/verify/credential",
     certificateFile: "certificates/Introduction_to_Cybersecurity_certificate.pdf",
     logo: "images/Cisco_academy_logo.svg.webp"
   },
@@ -142,7 +142,7 @@ const CERTIFICATES = [
     issuer: "Cisco Networking Academy",
     date: "2026-01-22",
     certificateNumber: "N/A",
-    verificationUrl: "https://example.com/verify/CERTIFICATE-ID",
+    verificationUrl: "https://cp.certmetrics.com/cisco/en/public/verify/credential",
     certificateFile: "certificates/Cyber_Threat_Management_certificate.pdf",
     logo: "images/Cisco_academy_logo.svg.webp"
   },
