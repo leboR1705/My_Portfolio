@@ -204,7 +204,6 @@ function renderCertificates(){
     return `
     <article class="cert-card">
       <button type="button" class="cert-thumb" data-image="${c.image || ''}" data-file="${c.certificateFile}" aria-label="View ${c.title} certificate">
-        <span class="cert-org-badge">${c.issuer}</span>
         ${c.image
           ? `<img class="cert-img" src="${c.image}" alt="Preview of ${c.title} certificate">`
           : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7l-9-5Z"/></svg>`}
