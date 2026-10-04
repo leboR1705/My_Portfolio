@@ -117,7 +117,7 @@ const CERTIFICATES = [
     certificateNumber: "ktJqUHixO0",
     verificationUrl: "https://tesda.gov.ph/Rwac",
     certificateFile: "certificates/Certificate_of_Completion,%20tesda.pdf",
-    logo: "images/TESDA_Seal.svg.webp"
+    image: "images/cert-certificate-of-completion-tesda.png"
   },
   {
     title: "Networking Basics",
@@ -126,7 +126,7 @@ const CERTIFICATES = [
     certificateNumber: "N/A",
     verificationUrl: "https://cp.certmetrics.com/cisco/en/public/verify/credential",
     certificateFile: "certificates/Networking_Basics_certificate.pdf",
-    logo: "images/Cisco_academy_logo.svg.webp"
+    image: "images/cert-networking-basics-certificate.png"
   },
   {
     title: "Introduction to Cybersecurity",
@@ -135,7 +135,7 @@ const CERTIFICATES = [
     certificateNumber: "N/A",
     verificationUrl: "https://cp.certmetrics.com/cisco/en/public/verify/credential",
     certificateFile: "certificates/Introduction_to_Cybersecurity_certificate.pdf",
-    logo: "images/Cisco_academy_logo.svg.webp"
+    image: "images/cert-introduction-to-cybersecurity-certificate.png"
   },
   {
     title: "Cyber Threat Management",
@@ -144,7 +144,7 @@ const CERTIFICATES = [
     certificateNumber: "N/A",
     verificationUrl: "https://cp.certmetrics.com/cisco/en/public/verify/credential",
     certificateFile: "certificates/Cyber_Threat_Management_certificate.pdf",
-    logo: "images/Cisco_academy_logo.svg.webp"
+    image: "images/cert-cyber-threat-management-certificate.png"
   },
   {
     title: "Information Technology Specialist — Network Security",
@@ -153,7 +153,7 @@ const CERTIFICATES = [
     certificateNumber: "wn8Cz-48eN",
     verificationUrl: "https://www.certiport.com/portal/pages/credentialverification.aspx",
     certificateFile: "certificates/Information%20Technology%20Specialist.pdf",
-    logo: "images/Certiport_Logo.jpg"
+    image: "images/cert-information-technology-specialist.png"
   }
 ];
 
@@ -203,12 +203,12 @@ function renderCertificates(){
     const isPlaceholder = c.certificateNumber.includes('[') || c.verificationUrl.includes('example.com');
     return `
     <article class="cert-card">
-      <div class="cert-thumb">
+      <button type="button" class="cert-thumb" data-image="${c.image || ''}" data-file="${c.certificateFile}" aria-label="View ${c.title} certificate">
         <span class="cert-org-badge">${c.issuer}</span>
-        ${c.logo
-          ? `<img class="cert-logo" src="${c.logo}" alt="${c.issuer} logo">`
+        ${c.image
+          ? `<img class="cert-img" src="${c.image}" alt="Preview of ${c.title} certificate">`
           : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7l-9-5Z"/></svg>`}
-      </div>
+      </button>
       <div class="cert-body">
         <h3>${c.title}</h3>
         <span class="cert-issuer">${c.issuer}</span>
@@ -217,7 +217,6 @@ function renderCertificates(){
         ${isPlaceholder ? '<span class="placeholder-flag">placeholder — replace before publishing</span>' : ''}
         <div class="cert-actions">
           <a class="btn btn-primary btn-sm" href="${c.verificationUrl}" target="_blank" rel="noopener">Verify</a>
-          <a class="btn btn-ghost btn-sm" href="${c.certificateFile}" target="_blank" rel="noopener">View</a>
         </div>
       </div>
     </article>
@@ -229,3 +228,38 @@ renderCertificates();
 document.getElementById('certSearch').addEventListener('input', renderCertificates);
 document.getElementById('certOrgFilter').addEventListener('change', renderCertificates);
 document.getElementById('certSort').addEventListener('change', renderCertificates);
+
+/* ============================================================
+   CERTIFICATE LIGHTBOX
+   ============================================================ */
+(function(){
+  const lightbox = document.getElementById('lightbox');
+  const img = document.getElementById('lightboxImg');
+
+  function open(thumb){
+    const image = thumb.dataset.image;
+    if(!image){
+      window.open(thumb.dataset.file, '_blank', 'noopener');
+      return;
+    }
+    img.src = image;
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    img.removeAttribute('src');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('certGrid').addEventListener('click', (e) => {
+    const thumb = e.target.closest('.cert-thumb');
+    if(thumb) open(thumb);
+  });
+  lightbox.addEventListener('click', (e) => {
+    if(e.target.hasAttribute('data-close') || e.target.closest('.lightbox-close')) close();
+  });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') close(); });
+})();
