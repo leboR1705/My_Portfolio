@@ -212,7 +212,7 @@ function renderCertificates(){
         <h3>${c.title}</h3>
         <span class="cert-issuer">${c.issuer}</span>
         <div class="cert-meta-row"><span>${fmtDate(c.date)}</span></div>
-        <span class="cert-num">No. ${c.certificateNumber}</span>
+        <span class="cert-num">Cert. Code: ${c.certificateNumber}</span>
         ${isPlaceholder ? '<span class="placeholder-flag">placeholder — replace before publishing</span>' : ''}
         <div class="cert-actions">
           <a class="cert-verify" href="${c.verificationUrl}" target="_blank" rel="noopener">&lt;&lt; verify &gt;&gt;</a>

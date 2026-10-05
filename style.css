@@ -205,7 +205,7 @@ header.nav{
   width:100%;
   display:grid; grid-template-columns:1fr; gap:40px; align-items:center; justify-items:center;
 }
-.hero .wrap > div{text-align:center;}
+.hero .wrap > div{text-align:center; width:100%;}
 .hero-kicker{
   display:inline-flex; align-items:center; gap:8px;
   font-family:var(--font-mono); font-size:13px; color:var(--ink-faint);
@@ -216,7 +216,7 @@ header.nav{
   margin-top:14px; font-size:clamp(16px,2vw,19px); color:var(--ink-soft); font-weight:500;
 }
 .hero .role span{color:var(--accent); font-weight:600;}
-.hero .intro{margin-top:22px; max-width:52ch; color:var(--ink-soft); font-size:16px;}
+.hero .intro{margin:22px auto 0; width:100%; max-width:52ch; color:var(--ink-soft); font-size:16px;}
 .hero-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; justify-content:center;}
 
 .hero-card{
