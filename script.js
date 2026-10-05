@@ -215,7 +215,7 @@ function renderCertificates(){
         <span class="cert-num">No. ${c.certificateNumber}</span>
         ${isPlaceholder ? '<span class="placeholder-flag">placeholder — replace before publishing</span>' : ''}
         <div class="cert-actions">
-          <a class="btn btn-primary btn-sm" href="${c.verificationUrl}" target="_blank" rel="noopener">Verify</a>
+          <a class="cert-verify" href="${c.verificationUrl}" target="_blank" rel="noopener">&lt;&lt; verify &gt;&gt;</a>
         </div>
       </div>
     </article>

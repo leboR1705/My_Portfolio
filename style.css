@@ -404,8 +404,19 @@ select.cert-select{
 .cert-issuer{font-size:12px; color:var(--ink-soft);}
 .cert-meta-row{display:flex; justify-content:space-between; font-size:11px; color:var(--ink-faint); font-family:var(--font-mono); margin-top:2px;}
 .cert-num{font-size:10.5px; color:var(--ink-faint); font-family:var(--font-mono); word-break:break-all;}
-.cert-actions{display:flex; gap:8px; margin-top:auto; padding-top:6px;}
-.cert-actions .btn{flex:1; padding:6px 12px; font-size:12px; border-radius:7px;}
+.cert-actions{display:flex; justify-content:center; margin-top:auto; padding-top:6px;}
+.cert-verify{
+  display:inline-block;
+  font-family:var(--font-mono);
+  font-size:12px;
+  letter-spacing:.04em;
+  color:var(--ink);
+  font-weight:700;
+  text-decoration:none;
+  padding:4px 2px;
+  transition:opacity .2s, letter-spacing .2s;
+}
+.cert-verify:hover{opacity:.7; letter-spacing:.12em;}
 .placeholder-flag{
   display:inline-block; margin-top:2px; font-size:10.5px; font-family:var(--font-mono);
   color:var(--danger); background:color-mix(in srgb, var(--danger) 12%, transparent);
