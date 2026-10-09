@@ -189,7 +189,7 @@
       </div>
       <div class="item">
         <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>Technical skills</h4>
-        <p>HTML, CSS, JavaScript, Python, C++, Django, PostgreSQL, Networking, Cybersecurity, Git</p>
+        <p>HTML, CSS, JavaScript, Python, C++, Django, MySQL, Networking, Cybersecurity, Git</p>
       </div>
       <div class="item">
         <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 4v16"/></svg>Projects</h4>
@@ -262,6 +262,15 @@
   <div class="lightbox-frame" role="dialog" aria-modal="true" aria-label="Certificate preview">
     <button class="lightbox-close" id="lightboxClose" aria-label="Close preview">&times;</button>
     <img id="lightboxImg" alt="Certificate preview">
+  </div>
+</div>
+
+<div class="lightbox" id="projectModal" aria-hidden="true">
+  <div class="lightbox-backdrop" data-close></div>
+  <div class="lightbox-frame project-modal" role="dialog" aria-modal="true" aria-label="Project images">
+    <button class="lightbox-close" data-close aria-label="Close project images">&times;</button>
+    <h3 id="projectModalTitle"></h3>
+    <div class="project-gallery" id="projectGallery"></div>
   </div>
 </div>
 

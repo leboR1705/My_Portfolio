@@ -52,9 +52,13 @@ const PROJECTS = [
     title: "Campus-Based OJT Monitoring System",
     description: "A campus deployment system integrating facial recognition for attendance and time tracking, with narrative reporting for OJT students. Reduces manual logging and gives coordinators a real-time view of trainee attendance.",
     image: "images/projects/ojt-monitoring-system.jpg",
-    tag: "Featured",
-    role: "[Your role, e.g. Full-stack developer]",
-    tech: ["Python", "Django", "PostgreSQL", "OpenCV"],
+    images: [
+      "images/projects/06dad032-b019-4c33-8e43-e5b5fcda9f1c.jfif",
+      "images/projects/68ac98ef-6d4a-4043-978c-e1692da3a19f.jfif",
+      "images/projects/74e509bf-6ebc-42c1-bf20-17037e1256ab.jfif"
+    ],
+    role: "Project Leader, Collaborator",
+    tech: ["Python", "Django", "MySQL", "OpenCV"],
     liveUrl: "",
     githubUrl: "https://github.com/manarangrhomar-creator/OJT-MONITORING",
     featured: false
@@ -62,7 +66,6 @@ const PROJECTS = [
   {
     title: "[Project Title]",
     description: "[Short description of what the project does and the problem it solves.]",
-    tag: "Coursework",
     role: "[Your role]",
     tech: ["HTML", "CSS", "JavaScript"],
     liveUrl: "",
@@ -72,7 +75,11 @@ const PROJECTS = [
   {
     title: "[Project Title]",
     description: "[Short description of what the project does and the problem it solves.]",
-    tag: "Personal",
+    image: "images/projects/e9993b02-86d7-4a87-9773-d7aa1af0bd04.jfif",
+    images: [
+      "images/projects/04975ac7-fd9f-412b-8e29-7f7697813d79.jfif",
+      "images/projects/73693e9a-d084-4b12-b943-75f406487ee7.jfif"
+    ],
     role: "[Your role]",
     tech: ["Python", "C++"],
     liveUrl: "",
@@ -83,7 +90,7 @@ const PROJECTS = [
 
 function renderProjects(){
   const grid = document.getElementById('projectGrid');
-  grid.innerHTML = PROJECTS.map(p => `
+  grid.innerHTML = PROJECTS.map((p, i) => `
     <article class="project-card ${p.featured ? 'featured' : ''}">
       <div class="project-media">
         ${p.image
@@ -91,13 +98,14 @@ function renderProjects(){
           : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`}
       </div>
       <div class="project-body">
-        <span class="project-tag">${p.tag}</span>
         <h3>${p.title}</h3>
         <p class="desc">${p.description}</p>
         <div class="project-meta"><span><strong>Role:</strong> ${p.role}</span></div>
         <div class="tech-row">${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}</div>
         <div class="project-actions">
-          <a class="btn btn-primary btn-sm" href="${p.liveUrl || '#'}" ${p.liveUrl ? 'target="_blank" rel="noopener"' : ''}>View project</a>
+          ${(p.images && p.images.length)
+            ? `<button type="button" class="btn btn-primary btn-sm" data-view-project="${i}">View project</button>`
+            : `<a class="btn btn-primary btn-sm" href="${p.liveUrl || '#'}" ${p.liveUrl ? 'target="_blank" rel="noopener"' : ''}>View project</a>`}
           ${p.githubUrl ? `<a class="btn btn-ghost btn-sm" href="${p.githubUrl}" target="_blank" rel="noopener">GitHub</a>` : `<span class="btn btn-ghost btn-sm" style="opacity:.5; cursor:not-allowed;">GitHub — add link</span>`}
         </div>
       </div>
@@ -105,6 +113,40 @@ function renderProjects(){
   `).join('');
 }
 renderProjects();
+
+/* ============================================================
+   PROJECT GALLERY MODAL
+   ============================================================ */
+(function(){
+  const modal = document.getElementById('projectModal');
+  const title = document.getElementById('projectModalTitle');
+  const gallery = document.getElementById('projectGallery');
+
+  function open(p){
+    title.textContent = p.title;
+    gallery.innerHTML = p.images.map(src =>
+      `<img src="${src}" alt="${p.title} screenshot">`
+    ).join('');
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    gallery.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('projectGrid').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-view-project]');
+    if(btn) open(PROJECTS[+btn.dataset.viewProject]);
+  });
+  modal.addEventListener('click', (e) => {
+    if(e.target.hasAttribute('data-close') || e.target.closest('.lightbox-close')) close();
+  });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') close(); });
+})();
 
 /* ============================================================
    CERTIFICATE DATA
