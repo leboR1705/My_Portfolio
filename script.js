@@ -51,11 +51,12 @@ const PROJECTS = [
   {
     title: "Campus-Based OJT Monitoring System",
     description: "A campus deployment system integrating facial recognition for attendance and time tracking, with narrative reporting for OJT students. Reduces manual logging and gives coordinators a real-time view of trainee attendance.",
+    image: "images/projects/ojt-monitoring-system.jpg",
     tag: "Featured",
     role: "[Your role, e.g. Full-stack developer]",
     tech: ["Python", "Django", "PostgreSQL", "OpenCV"],
     liveUrl: "",
-    githubUrl: "",
+    githubUrl: "https://github.com/manarangrhomar-creator/OJT-MONITORING",
     featured: false
   },
   {
@@ -85,7 +86,9 @@ function renderProjects(){
   grid.innerHTML = PROJECTS.map(p => `
     <article class="project-card ${p.featured ? 'featured' : ''}">
       <div class="project-media">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        ${p.image
+          ? `<img src="${p.image}" alt="${p.title} logo">`
+          : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`}
       </div>
       <div class="project-body">
         <span class="project-tag">${p.tag}</span>
