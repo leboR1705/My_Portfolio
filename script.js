@@ -49,8 +49,8 @@ document.getElementById('year').textContent = new Date().getFullYear();
    ============================================================ */
 const PROJECTS = [
   {
-    title: "Campus-Based OJT Monitoring System",
-    description: "A campus deployment system integrating facial recognition for attendance and time tracking, with narrative reporting for OJT students. Reduces manual logging and gives coordinators a real-time view of trainee attendance.",
+    title: "OJT Monitoring System",
+    description: "A web application that allows OJT students to log attendance using facial recognition, track their time progress, and submit daily narrative reports, while enabling the coordinator to monitor student attendance, narrative reports, and progress.",
     image: "images/projects/ojt-monitoring-system.jpg",
     images: [
       "images/projects/06dad032-b019-4c33-8e43-e5b5fcda9f1c.jfif",
@@ -73,17 +73,17 @@ const PROJECTS = [
     featured: false
   },
   {
-    title: "[Project Title]",
-    description: "[Short description of what the project does and the problem it solves.]",
+    title: "Satori Spa — Massage Spa Booking System",
+    description: "A Django web application for managing a massage spa business. Customers browse services and book appointments online with email confirmations, while staff use an admin dashboard to manage bookings, services, therapists, and track monthly revenue.",
     image: "images/projects/e9993b02-86d7-4a87-9773-d7aa1af0bd04.jfif",
     images: [
       "images/projects/04975ac7-fd9f-412b-8e29-7f7697813d79.jfif",
       "images/projects/73693e9a-d084-4b12-b943-75f406487ee7.jfif"
     ],
-    role: "[Your role]",
-    tech: ["Python", "C++"],
+    role: "Sole Developer",
+    tech: ["Python", "Django", "MySQL", "HTML", "CSS", "JavaScript"],
     liveUrl: "",
-    githubUrl: "",
+    githubUrl: "https://github.com/leboR1705/MassageSpa",
     featured: false
   }
 ];
