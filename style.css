@@ -101,7 +101,7 @@ ul{margin:0;padding:0;list-style:none;}
 .eyebrow{
   font-family:var(--font-mono);
   font-size:13px;
-  color:var(--accent);
+  color:var(--ink);
   letter-spacing:0.02em;
 }
 .section-head{margin-bottom:44px; max-width:640px;}
@@ -338,7 +338,23 @@ header.nav{
   transition:border-color .15s ease, transform .15s ease;
 }
 .chip:hover{border-color:var(--accent); transform:translateY(-1px);}
-.chip .dot{width:6px; height:6px; border-radius:50%; background:var(--accent);}
+.chip svg{width:16px; height:16px; flex-shrink:0; color:var(--accent);}
+.chip .i-html{color:#E34F26;}
+.chip .i-css{color:#663399;}
+.chip .i-js{color:#F7DF1E;}
+.chip .i-python{color:#3776AB;}
+.chip .i-cpp{color:#00599C;}
+.chip .i-django{color:#092E20;}
+.chip .i-mysql{color:#4479A1;}
+.chip .i-mariadb{color:#003545;}
+.chip .i-sqlite{color:#003B57;}
+.chip .i-git{color:#F03C2E;}
+:root[data-theme="dark"] .chip .i-django,
+:root:not([data-theme="light"]) .chip .i-django{color:#44B78B;}
+:root[data-theme="dark"] .chip .i-mariadb,
+:root:not([data-theme="light"]) .chip .i-mariadb{color:#C0765A;}
+:root[data-theme="dark"] .chip .i-sqlite,
+:root:not([data-theme="light"]) .chip .i-sqlite{color:#5C9FD6;}
 
 /* ============================================================
    PROJECTS
