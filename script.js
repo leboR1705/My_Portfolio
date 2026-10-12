@@ -169,7 +169,7 @@ const CERTIFICATES = [
     issuer: "Cisco Networking Academy",
     date: "2026-02-17",
     certificateNumber: "N/A",
-    verificationUrl: "https://cp.certmetrics.com/cisco/en/public/verify/credential",
+    verificationUrl: "https://www.credly.com/badges/fe6727cb-97c4-4221-ae66-9d8eda43f3b1",
     certificateFile: "certificates/Networking_Basics_certificate.pdf",
     image: "images/cert-networking-basics-certificate.png"
   },
@@ -178,7 +178,7 @@ const CERTIFICATES = [
     issuer: "Cisco Networking Academy",
     date: "2026-01-23",
     certificateNumber: "N/A",
-    verificationUrl: "https://cp.certmetrics.com/cisco/en/public/verify/credential",
+    verificationUrl: "https://www.credly.com/badges/027dac7b-aeb9-4f2e-9ccf-6835513646e7",
     certificateFile: "certificates/Introduction_to_Cybersecurity_certificate.pdf",
     image: "images/cert-introduction-to-cybersecurity-certificate.png"
   },
@@ -187,7 +187,7 @@ const CERTIFICATES = [
     issuer: "Cisco Networking Academy",
     date: "2026-01-22",
     certificateNumber: "N/A",
-    verificationUrl: "https://cp.certmetrics.com/cisco/en/public/verify/credential",
+    verificationUrl: "https://www.credly.com/badges/efdae50b-9ab8-42bf-829b-a9a9326f5af9",
     certificateFile: "certificates/Cyber_Threat_Management_certificate.pdf",
     image: "images/cert-cyber-threat-management-certificate.png"
   },
