@@ -44,6 +44,31 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
 /* ============================================================
+   TYPEWRITER (below hero social links)
+   To change the animated text, edit the text variable below.
+   ============================================================ */
+(function(){
+  const holder = document.getElementById('heroTyped');
+  const el = document.getElementById('typedText');
+  if(!holder || !el) return;
+  const text = 'Hello World';
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    el.textContent = text;
+    return;
+  }
+  holder.classList.add('typing');
+  let charIndex = 0, deleting = false;
+  (function tick(){
+    charIndex += deleting ? -1 : 1;
+    el.textContent = text.slice(0, charIndex);
+    let delay = deleting ? 100 : 180;
+    if(!deleting && charIndex === text.length){ delay = 1800; deleting = true; }
+    else if(deleting && charIndex === 0){ deleting = false; delay = 500; }
+    setTimeout(tick, delay);
+  })();
+})();
+
+/* ============================================================
    PROJECT DATA
    To add a project, copy an object below and edit the fields.
    ============================================================ */
