@@ -106,7 +106,7 @@ ul{margin:0;padding:0;list-style:none;}
   text-transform:uppercase;
 }
 .section-head{margin-bottom:44px; max-width:640px;}
-.section-head h2{font-size:clamp(23px,3vw,29px); margin-top:8px;}
+.section-head h2{font-size:clamp(20px,2.6vw,25px); margin-top:7px;}
 .section-head p{color:var(--ink-soft); margin-top:10px; font-size:15px;}
 section{padding:44px 0 96px;}
 section:nth-of-type(even){background:var(--surface);}
@@ -432,12 +432,12 @@ header.nav{
   padding:14px 16px; margin-bottom:28px;
 }
 .cert-search{
-  flex:1 1 220px; display:flex; align-items:center; gap:8px;
-  background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:9px 12px;
+  flex:0 1 180px; display:flex; align-items:center; gap:6px;
+  background:var(--surface-2); border:1px solid var(--line); border-radius:8px; padding:7px 10px;
 }
-.cert-search svg{width:15px; height:15px; color:var(--ink-faint); flex-shrink:0;}
+.cert-search svg{width:13px; height:13px; color:var(--ink-faint); flex-shrink:0;}
 .cert-search input{
-  border:none; background:transparent; outline:none; color:var(--ink); font-size:14px; width:100%; font-family:var(--font-body);
+  border:none; background:transparent; outline:none; color:var(--ink); font-size:13px; width:100%; font-family:var(--font-body);
 }
 .cert-search input::placeholder{color:var(--ink-faint);}
 select.cert-select{
