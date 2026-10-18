@@ -106,7 +106,7 @@ const PROJECTS = [
       "images/projects/73693e9a-d084-4b12-b943-75f406487ee7.jfif"
     ],
     role: "Sole Developer",
-    tech: ["Python", "Django", "MySQL", "HTML", "CSS", "JavaScript"],
+    tech: ["Python", "Django", "MariaDB", "HTML", "CSS", "JS"],
     liveUrl: "",
     githubUrl: "https://github.com/leboR1705/MassageSpa",
     featured: false
@@ -128,9 +128,7 @@ function renderProjects(){
         <div class="project-meta"><span><strong>Role:</strong> ${p.role}</span></div>
         <div class="tech-row">${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}</div>
         <div class="project-actions">
-          ${(p.images && p.images.length)
-            ? `<button type="button" class="btn btn-primary btn-sm" data-view-project="${i}">View project</button>`
-            : `<a class="btn btn-primary btn-sm" href="${p.liveUrl || '#'}" ${p.liveUrl ? 'target="_blank" rel="noopener"' : ''}>View project</a>`}
+          <button type="button" class="btn btn-primary btn-sm" data-view-project="${i}">View project</button>
           ${p.githubUrl ? `<a class="btn btn-ghost btn-sm" href="${p.githubUrl}" target="_blank" rel="noopener">GitHub</a>` : `<span class="btn btn-ghost btn-sm" style="opacity:.5; cursor:not-allowed;">GitHub — add link</span>`}
         </div>
       </div>
@@ -146,12 +144,16 @@ renderProjects();
   const modal = document.getElementById('projectModal');
   const title = document.getElementById('projectModalTitle');
   const gallery = document.getElementById('projectGallery');
+  const desc = document.getElementById('projectModalDesc');
 
   function open(p){
     title.textContent = p.title;
-    gallery.innerHTML = p.images.map(src =>
+    desc.textContent = p.description;
+    const shots = p.images || [];
+    gallery.innerHTML = shots.map(src =>
       `<img src="${src}" alt="${p.title} screenshot">`
     ).join('');
+    gallery.hidden = !shots.length;
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -160,6 +162,7 @@ renderProjects();
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
     gallery.innerHTML = '';
+    desc.textContent = '';
     document.body.style.overflow = '';
   }
 
