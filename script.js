@@ -89,15 +89,6 @@ const PROJECTS = [
     featured: false
   },
   {
-    title: "[Project Title]",
-    description: "[Short description of what the project does and the problem it solves.]",
-    role: "[Your role]",
-    tech: ["HTML", "CSS", "JavaScript"],
-    liveUrl: "",
-    githubUrl: "",
-    featured: false
-  },
-  {
     title: "Satori Spa — Massage Spa Booking System",
     description: "A Django web application for managing a massage spa business. Customers browse services and book appointments online with email confirmations, while staff use an admin dashboard to manage bookings, services, therapists, and track monthly revenue.",
     image: "images/projects/e9993b02-86d7-4a87-9773-d7aa1af0bd04.jfif",
