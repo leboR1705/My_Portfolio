@@ -29,16 +29,51 @@
    ============================================================ */
 (function(){
   const links = document.querySelectorAll('.nav-links a');
-  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        const id = '#' + entry.target.id;
-        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
-      }
+  const sections = Array.from(links)
+    .map(l => document.querySelector(l.getAttribute('href')))
+    .filter(Boolean);
+  const home = document.querySelector('#home');
+
+  function clearActive(){
+    links.forEach(l => l.classList.remove('active'));
+  }
+
+  function setActive(hash){
+    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === hash));
+  }
+
+  function update(){
+    const line = window.scrollY + 120;
+    if(home && line < home.offsetTop + home.offsetHeight){
+      clearActive();
+      return;
+    }
+    let current = null;
+    for(const s of sections){
+      if(line >= s.offsetTop) current = '#' + s.id;
+    }
+    if(current) setActive(current);
+    else clearActive();
+  }
+
+  window.addEventListener('scroll', update, { passive:true });
+  window.addEventListener('resize', update);
+  window.addEventListener('hashchange', () => {
+    update();
+    setTimeout(update, 400);
+  });
+
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      clearActive();
+      link.classList.add('active');
+      setTimeout(update, 400);
+      setTimeout(update, 900);
     });
-  }, { rootMargin: '-45% 0px -50% 0px' });
-  sections.forEach(s => s && io.observe(s));
+  });
+
+  document.querySelector('.brand')?.addEventListener('click', clearActive);
+  update();
 })();
 
 document.getElementById('year').textContent = new Date().getFullYear();
