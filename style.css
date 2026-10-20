@@ -26,6 +26,7 @@
   --maxw:1120px;
   --nav-h:72px;
   --dot:rgba(100,96,90,0.28);
+  --brand-ink:#0A0C10;
   color-scheme: light;
 }
 
@@ -47,6 +48,7 @@
     --shadow:0 1px 2px rgba(0,0,0,0.25), 0 8px 24px rgba(0,0,0,0.25);
     --hover-glow:0 10px 28px rgba(0,0,0,0.35);
     --dot:rgba(148,155,165,0.22);
+    --brand-ink:#FFFFFF;
     color-scheme: dark;
   }
 }
@@ -68,6 +70,7 @@
   --shadow:0 1px 2px rgba(0,0,0,0.25), 0 8px 24px rgba(0,0,0,0.25);
   --hover-glow:0 10px 28px rgba(0,0,0,0.35);
   --dot:rgba(148,155,165,0.22);
+  --brand-ink:#FFFFFF;
   color-scheme: dark;
 }
 
@@ -151,7 +154,7 @@ header.nav{
   height:var(--nav-h);
   display:flex; align-items:center; justify-content:space-between;
 }
-.brand{display:flex; align-items:center; gap:10px; font-family:'Poppins', sans-serif; font-weight:600; font-size:21px; letter-spacing:0.01em;}
+.brand{display:flex; align-items:center; gap:10px; font-family:'Poppins', sans-serif; font-weight:700; font-size:18px; letter-spacing:0.01em; color:var(--brand-ink);}
 .brand-mark{
   width:34px; height:34px; border-radius:50%;
   background:#000; color:#fff;
@@ -167,17 +170,17 @@ header.nav{
 .nav-links a{
   position:relative;
   padding:9px 14px; font-size:14px; color:var(--ink-soft); border-radius:8px;
-  transition:color .15s ease, background .15s ease;
+  transition:color .3s ease, background .3s ease;
 }
 .nav-links a::after{
   content:""; position:absolute; left:14px; right:14px; bottom:5px; height:2px;
-  background:var(--accent); border-radius:2px;
+  background:var(--brand-ink); border-radius:2px;
   transform:scaleX(0); transform-origin:left center;
-  transition:transform .22s ease;
+  transition:transform .35s cubic-bezier(.4,0,.2,1), background .3s ease;
 }
-.nav-links a:hover::after, .nav-links a.active::after{transform:scaleX(1);}
-.nav-links a:hover{color:var(--ink); background:var(--surface-2);}
-.nav-links a.active{color:var(--ink); font-weight:600;}
+.nav-links a:hover::after, .nav-links a.active::after{transform:scaleX(1); background:var(--brand-ink);}
+.nav-links a:hover{color:var(--brand-ink); background:transparent;}
+.nav-links a.active{color:var(--brand-ink); font-weight:600;}
 .nav-right{display:flex; align-items:center; gap:10px;}
 
 .theme-toggle{
@@ -210,6 +213,7 @@ header.nav{
 .mobile-panel.open{display:block;}
 .mobile-panel a{display:block; padding:12px 4px; font-size:15px; border-bottom:1px solid var(--line); color:var(--ink-soft);}
 .mobile-panel a:last-child{border-bottom:none;}
+.mobile-panel a:hover{color:var(--brand-ink);}
 
 @media (max-width:860px){
   .nav-links{display:none;}

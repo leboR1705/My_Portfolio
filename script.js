@@ -33,6 +33,7 @@
     .map(l => document.querySelector(l.getAttribute('href')))
     .filter(Boolean);
   const home = document.querySelector('#home');
+  let lockUntil = 0;
 
   function clearActive(){
     links.forEach(l => l.classList.remove('active'));
@@ -43,6 +44,7 @@
   }
 
   function update(){
+    if(Date.now() < lockUntil) return;
     const line = window.scrollY + 120;
     if(home && line < home.offsetTop + home.offsetHeight){
       clearActive();
@@ -65,6 +67,7 @@
 
   links.forEach(link => {
     link.addEventListener('click', () => {
+      lockUntil = Date.now() + 700;
       clearActive();
       link.classList.add('active');
       setTimeout(update, 400);
@@ -72,7 +75,10 @@
     });
   });
 
-  document.querySelector('.brand')?.addEventListener('click', clearActive);
+  document.querySelector('.brand')?.addEventListener('click', () => {
+    lockUntil = Date.now() + 700;
+    clearActive();
+  });
   update();
 })();
 
