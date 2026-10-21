@@ -148,7 +148,7 @@ const PROJECTS = [
 function renderProjects(){
   const grid = document.getElementById('projectGrid');
   grid.innerHTML = PROJECTS.map((p, i) => `
-    <article class="project-card ${p.featured ? 'featured' : ''}">
+    <article class="project-card reveal ${p.featured ? 'featured' : ''}">
       <div class="project-media">
         ${p.image
           ? `<img src="${p.image}" alt="${p.title} logo">`
@@ -307,7 +307,7 @@ function renderCertificates(){
   grid.innerHTML = list.map(c => {
     const isPlaceholder = c.certificateNumber.includes('[') || c.verificationUrl.includes('example.com');
     return `
-    <article class="cert-card">
+    <article class="cert-card reveal">
       <button type="button" class="cert-thumb" data-image="${c.image || ''}" data-file="${c.certificateFile}" aria-label="View ${c.title} certificate">
         ${c.image
           ? `<img class="cert-img" src="${c.image}" alt="Preview of ${c.title} certificate">`
@@ -366,4 +366,42 @@ document.getElementById('certSort').addEventListener('change', renderCertificate
     if(e.target.hasAttribute('data-close') || e.target.closest('.lightbox-close')) close();
   });
   document.addEventListener('keydown', (e) => { if(e.key === 'Escape') close(); });
+})();
+
+/* ============================================================
+   SCROLL REVEAL
+   Elements with .reveal fade + slide in when they enter the viewport.
+   ============================================================ */
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const TARGETS = [
+    '.section-head',
+    '.about-text', '.about-quote',
+    '.skill-group',
+    '.cert-toolbar',
+    '.edu-item',
+    '.resume-wrap',
+    '.resume-list .item',
+    '.contact-card'
+  ].join(', ');
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      e.target.classList.toggle('visible', e.isIntersecting);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+  function scan(){
+    document.querySelectorAll(TARGETS).forEach(el => {
+      if(!el.classList.contains('reveal')) el.classList.add('reveal');
+      io.observe(el);
+    });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  }
+
+  scan();
+
+  new MutationObserver(scan).observe(document.getElementById('projectGrid'), { childList: true });
+  new MutationObserver(scan).observe(document.getElementById('certGrid'), { childList: true });
 })();
