@@ -216,6 +216,15 @@ renderProjects();
    ============================================================ */
 const CERTIFICATES = [
   {
+    title: "AI Security Summit 2026: CxO Trust",
+    issuer: "Cloud Security Alliance",
+    date: "2026-08-19",
+    certificateNumber: "N/A",
+    verificationUrl: "https://example.com",
+    certificateFile: "certificates/AI%20Security%20Summit%20Certificate.pdf",
+    image: "images/cert-ai-security-summit.png"
+  },
+  {
     title: "Microsoft Cybersecurity Course: Security, Compliance, and Identity Fundamentals",
     issuer: "TESDA",
     date: "2026-08-30",
