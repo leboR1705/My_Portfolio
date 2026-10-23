@@ -130,14 +130,15 @@ function renderProjects(){
           : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`}
       </div>
       <div class="project-body">
+        <span class="project-index">PROJECT ${String(i + 1).padStart(2, '0')}</span>
         <h3>${p.title}</h3>
         <p class="desc">${p.description}</p>
         <div class="project-meta"><span><strong>Role:</strong> ${p.role}</span></div>
         <div class="tech-row">${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}</div>
-        <div class="project-actions">
-          <button type="button" class="btn btn-primary btn-sm" data-view-project="${i}">View project</button>
-          ${p.githubUrl ? `<a class="btn btn-ghost btn-sm" href="${p.githubUrl}" target="_blank" rel="noopener">GitHub</a>` : `<span class="btn btn-ghost btn-sm" style="opacity:.5; cursor:not-allowed;">GitHub — add link</span>`}
-        </div>
+      </div>
+      <div class="project-foot">
+        <button type="button" class="btn btn-primary btn-sm" data-view-project="${i}">View project</button>
+        ${p.githubUrl ? `<a class="btn btn-ghost btn-sm" href="${p.githubUrl}" target="_blank" rel="noopener">GitHub</a>` : `<span class="btn btn-ghost btn-sm" style="opacity:.5; cursor:not-allowed;">GitHub — add link</span>`}
       </div>
     </article>
   `).join('');
@@ -289,7 +290,7 @@ function renderCertificates(){
   }
 
   grid.innerHTML = list.map(c => {
-    const isPlaceholder = c.certificateNumber.includes('[') || c.verificationUrl.includes('example.com');
+    const isPlaceholder = c.certificateNumber.includes('[');
     return `
     <article class="cert-card reveal">
       <button type="button" class="cert-thumb" data-image="${c.image || ''}" data-file="${c.certificateFile}" aria-label="View ${c.title} certificate">
@@ -301,11 +302,10 @@ function renderCertificates(){
         <h3>${c.title}</h3>
         <span class="cert-issuer">${c.issuer}</span>
         <div class="cert-meta-row"><span>${fmtDate(c.date)}</span></div>
-        <span class="cert-num">Cert. Code: ${c.certificateNumber}</span>
         ${isPlaceholder ? '<span class="placeholder-flag">placeholder — replace before publishing</span>' : ''}
-        <div class="cert-actions">
-          <a class="cert-verify" href="${c.verificationUrl}" target="_blank" rel="noopener">&lt;&lt; verify &gt;&gt;</a>
-        </div>
+      </div>
+      <div class="cert-foot">
+        <a class="cert-verify" href="${c.verificationUrl}" target="_blank" rel="noopener">&lt;&lt; verify &gt;&gt;</a>
       </div>
     </article>
   `}).join('');
