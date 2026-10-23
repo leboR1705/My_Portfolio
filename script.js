@@ -122,26 +122,41 @@ const PROJECTS = [
 
 function renderProjects(){
   const grid = document.getElementById('projectGrid');
-  grid.innerHTML = PROJECTS.map((p, i) => `
-    <article class="project-card reveal ${p.featured ? 'featured' : ''}">
+  grid.innerHTML = PROJECTS.map((p, i) => {
+    const shots = (p.images && p.images.length) ? p.images : (p.image ? [p.image] : []);
+    const mainImg = p.image || shots[0] || '';
+    return `
+    <article class="project-row reveal">
       <div class="project-media">
-        ${p.image
-          ? `<img src="${p.image}" alt="${p.title} logo">`
-          : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`}
+        <div class="project-browser">
+          <div class="project-browser-bar">
+            <span class="pb-dot pb-red"></span>
+            <span class="pb-dot pb-yellow"></span>
+            <span class="pb-dot pb-green"></span>
+            <span class="pb-title">${p.title}</span>
+          </div>
+          <div class="project-shot">
+            ${mainImg
+              ? `<img src="${mainImg}" alt="${p.title}">`
+              : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`}
+          </div>
+        </div>
       </div>
-      <div class="project-body">
+      <div class="project-info">
         <span class="project-index">PROJECT ${String(i + 1).padStart(2, '0')}</span>
         <h3>${p.title}</h3>
         <p class="desc">${p.description}</p>
         <div class="project-meta"><span><strong>Role:</strong> ${p.role}</span></div>
         <div class="tech-row">${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}</div>
+        <div class="project-actions">
+          <button type="button" class="project-link" data-view-project="${i}">View project <span class="arrow" aria-hidden="true">&rarr;</span></button>
+          ${p.githubUrl
+            ? `<a class="btn btn-ghost btn-sm" href="${p.githubUrl}" target="_blank" rel="noopener">GitHub</a>`
+            : `<span class="btn btn-ghost btn-sm" style="opacity:.5; cursor:not-allowed;">GitHub — add link</span>`}
+        </div>
       </div>
-      <div class="project-foot">
-        <button type="button" class="btn btn-primary btn-sm" data-view-project="${i}">View project</button>
-        ${p.githubUrl ? `<a class="btn btn-ghost btn-sm" href="${p.githubUrl}" target="_blank" rel="noopener">GitHub</a>` : `<span class="btn btn-ghost btn-sm" style="opacity:.5; cursor:not-allowed;">GitHub — add link</span>`}
-      </div>
-    </article>
-  `).join('');
+    </article>`;
+  }).join('');
 }
 renderProjects();
 
