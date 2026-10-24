@@ -349,6 +349,74 @@ document.getElementById('certSort').addEventListener('change', renderCertificate
 })();
 
 /* ============================================================
+   CONTACT FORM (EmailJS)
+   Setup at https://dashboard.emailjs.com
+   1. Email Services -> Add New Service (Gmail) -> copy the Service ID
+   2. Email Templates -> New Template. Set "To Email" to your Gmail.
+      Add these variables to the subject/body: {{from_name}}, {{reply_to}}, {{message}}
+      -> copy the Template ID
+   3. Account -> General -> copy the Public Key
+   Replace the three values below, then the form will email you directly.
+   ============================================================ */
+const EMAILJS = {
+  publicKey: 'YOUR_PUBLIC_KEY',
+  serviceId: 'YOUR_SERVICE_ID',
+  templateId: 'YOUR_TEMPLATE_ID'
+};
+
+(function(){
+  const form = document.getElementById('contactForm');
+  if(!form) return;
+
+  const btn = document.getElementById('cfSend');
+  const status = document.getElementById('cfStatus');
+  const configured = ![EMAILJS.publicKey, EMAILJS.serviceId, EMAILJS.templateId]
+    .some(v => v.startsWith('YOUR_'));
+
+  if(configured && window.emailjs){
+    emailjs.init({ publicKey: EMAILJS.publicKey });
+  }
+
+  function setStatus(msg, type){
+    status.textContent = msg;
+    status.className = 'form-status' + (type ? ' ' + type : '');
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = form.from_name.value.trim();
+    const email = form.reply_to.value.trim();
+    const message = form.message.value.trim();
+
+    if(!name || !email || !message) return setStatus('Please fill in all fields.', 'error');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return setStatus('Please enter a valid email address.', 'error');
+    if(!configured || !window.emailjs){
+      return setStatus('Form is not set up yet — add your EmailJS keys in script.js.', 'error');
+    }
+
+    btn.disabled = true;
+    btn.classList.add('loading');
+    setStatus('', '');
+
+    try{
+      await emailjs.send(EMAILJS.serviceId, EMAILJS.templateId, {
+        from_name: name,
+        reply_to: email,
+        message
+      });
+      setStatus("Message sent — I'll get back to you soon.", 'success');
+      form.reset();
+    }catch(err){
+      setStatus('Something went wrong. Please try again or email me directly.', 'error');
+    }finally{
+      btn.disabled = false;
+      btn.classList.remove('loading');
+    }
+  });
+})();
+
+/* ============================================================
    SCROLL REVEAL
    Elements with .reveal fade + slide in when they enter the viewport.
    ============================================================ */
@@ -363,7 +431,9 @@ document.getElementById('certSort').addEventListener('change', renderCertificate
     '.edu-item',
     '.resume-wrap',
     '.resume-list .item',
-    '.contact-card'
+    '.contact-card',
+    '.contact-note',
+    '.contact-form'
   ].join(', ');
 
   const io = new IntersectionObserver((entries) => {
