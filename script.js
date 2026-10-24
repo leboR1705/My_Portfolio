@@ -167,11 +167,9 @@ renderProjects();
   const modal = document.getElementById('projectModal');
   const title = document.getElementById('projectModalTitle');
   const gallery = document.getElementById('projectGallery');
-  const desc = document.getElementById('projectModalDesc');
 
   function open(p){
     title.textContent = p.title;
-    desc.textContent = p.description;
     const shots = p.images || [];
     gallery.innerHTML = shots.map(src =>
       `<img src="${src}" alt="${p.title} screenshot">`
@@ -185,7 +183,6 @@ renderProjects();
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
     gallery.innerHTML = '';
-    desc.textContent = '';
     document.body.style.overflow = '';
   }
 
@@ -305,7 +302,7 @@ function renderCertificates(){
   }
 
   grid.innerHTML = list.map(c => {
-    const isPlaceholder = c.certificateNumber.includes('[');
+    const isPlaceholder = !c.verificationUrl || c.verificationUrl.includes('example.com');
     return `
     <article class="cert-card reveal">
       <button type="button" class="cert-thumb" data-image="${c.image || ''}" data-file="${c.certificateFile}" aria-label="View ${c.title} certificate">
@@ -317,7 +314,7 @@ function renderCertificates(){
         <h3>${c.title}</h3>
         <span class="cert-issuer">${c.issuer}</span>
         <div class="cert-meta-row"><span>${fmtDate(c.date)}</span></div>
-        ${isPlaceholder ? '<span class="placeholder-flag">placeholder — replace before publishing</span>' : ''}
+        ${isPlaceholder ? '<span class="placeholder-flag">verification link needed</span>' : ''}
       </div>
       <div class="cert-foot">
         <a class="cert-verify" href="${c.verificationUrl}" target="_blank" rel="noopener">&lt;&lt; verify &gt;&gt;</a>
