@@ -1,20 +1,4 @@
 /* ============================================================
-   THEME
-   ============================================================ */
-(function(){
-  const root = document.documentElement;
-  const saved = localStorage.getItem('portfolio-theme');
-  if(saved) root.setAttribute('data-theme', saved);
-  document.getElementById('themeToggle').addEventListener('click', () => {
-    const current = root.getAttribute('data-theme') ||
-      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    const next = current === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    try{ localStorage.setItem('portfolio-theme', next); }catch(e){}
-  });
-})();
-
-/* ============================================================
    MOBILE NAV
    ============================================================ */
 (function(){
