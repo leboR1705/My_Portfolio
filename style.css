@@ -555,6 +555,19 @@ select.cert-select{
   .edu-head{flex-direction:column; align-items:flex-start; gap:8px;}
 }
 
+.education-list{display:grid;}
+.education-item{padding:20px 0; border-bottom:1px solid var(--line);}
+.education-item:first-child{padding-top:0;}
+.education-item:last-child{padding-bottom:0; border-bottom:0;}
+.education-heading{display:flex; justify-content:space-between; align-items:baseline; gap:16px;}
+.education-level{margin-bottom:5px; font-size:12px; color:var(--ink-faint);}
+.education-heading h3{font-size:16px; color:var(--ink);}
+.education-year{flex-shrink:0; font-size:13px; color:var(--ink-soft);}
+.education-degree{margin-top:5px; font-size:14px; color:var(--ink-soft);}
+@media (max-width:600px){
+  .education-heading{flex-direction:column; align-items:flex-start; gap:4px;}
+}
+
 /* ============================================================
    RESUME
    ============================================================ */
