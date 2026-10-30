@@ -349,36 +349,6 @@ document.getElementById('certSort').addEventListener('change', renderCertificate
 })();
 
 /* ============================================================
-   CONTACT FORM
-   Backend pending — will be wired to Formspree.
-   ============================================================ */
-(function(){
-  const form = document.getElementById('contactForm');
-  if(!form) return;
-
-  const btn = document.getElementById('cfSend');
-  const status = document.getElementById('cfStatus');
-
-  function setStatus(msg, type){
-    status.textContent = msg;
-    status.className = 'form-status' + (type ? ' ' + type : '');
-  }
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const name = form.from_name.value.trim();
-    const email = form.reply_to.value.trim();
-    const message = form.message.value.trim();
-
-    if(!name || !email || !message) return setStatus('Please fill in all fields.', 'error');
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return setStatus('Please enter a valid email address.', 'error');
-
-    setStatus('Form backend is not set up yet.', 'error');
-  });
-})();
-
-/* ============================================================
    SCROLL REVEAL
    Elements with .reveal fade + slide in when they enter the viewport.
    ============================================================ */
