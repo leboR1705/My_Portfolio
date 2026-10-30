@@ -659,7 +659,7 @@ select.cert-select{
 }
 .form-field input::placeholder,.form-field textarea::placeholder{color:var(--ink-faint);}
 
-.form-actions{display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-top:2px;}
+.form-actions{display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:2px;}
 #cfSend{position:relative;}
 #cfSend svg{width:16px; height:16px; transition:transform .15s ease;}
 #cfSend:hover svg{transform:translateX(3px);}
