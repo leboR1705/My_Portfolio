@@ -247,39 +247,19 @@ header.nav{
   overflow:hidden;
 }
 #about .wrap{width:100%; position:relative; z-index:1;}
-.about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:start;}
-.about-text{position:relative; padding-left:22px;}
-.about-text::before{
-  content:""; position:absolute; left:0; top:4px; bottom:4px; width:2px;
-  background:linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 10%, transparent));
-}
+.about-grid{display:grid; grid-template-columns:1fr; gap:24px; align-items:start;}
+.about-text{position:relative;}
+.about-text::before{display:none;}
 .about-text p{color:#E8EBEF; margin-bottom:16px; font-size:var(--fs-lead); line-height:1.55; font-weight:400;}
 .about-text p:last-child{margin-bottom:0;}
-.about-text .hl{
-  color:var(--accent); font-weight:600; position:relative; white-space:nowrap;
-}
-.about-text .hl::after{
-  content:""; position:absolute; left:-2px; right:-2px; bottom:1px; height:7px;
-  background:color-mix(in srgb, var(--accent) 18%, transparent);
-  z-index:-1;
-}
 .about-quote{
   position:relative;
-  margin-top:-45px;
-  border:1px solid var(--line);
-  border-left:3px solid var(--accent);
-  border-radius:0;
-  padding:30px 28px 28px;
-  background:linear-gradient(180deg, color-mix(in srgb, var(--accent) 7%, var(--bg)), var(--bg));
-  overflow:hidden;
+  padding:0;
+  background:transparent;
+  border:none;
+  overflow:visible;
 }
-.about-quote .q-mark{
-  display:block;
-  font-family:var(--font-head); font-size:60px; line-height:.55; font-weight:700;
-  color:var(--accent); opacity:.4;
-  margin-bottom:14px;
-  user-select:none;
-}
+.about-quote .q-mark{display:none;}
 .about-quote .quote-text{
   position:relative; z-index:1;
   font-size:var(--fs-lead); line-height:1.55; font-weight:400; color:#E8EBEF;
