@@ -361,8 +361,6 @@ document.getElementById('certSort').addEventListener('change', renderCertificate
     '.skill-group',
     '.cert-toolbar',
     '.edu-item',
-    '.resume-wrap',
-    '.resume-list .item',
     '.contact-card',
     '.contact-note',
     '.contact-form'
