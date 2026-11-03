@@ -360,7 +360,7 @@ document.getElementById('certSort').addEventListener('change', renderCertificate
     '.about-text', '.about-quote',
     '.skill-group',
     '.cert-toolbar',
-    '.edu-item',
+    '.experience-item',
     '.contact-card',
     '.contact-note',
     '.contact-form'
