@@ -161,7 +161,6 @@
     <div class="section-head">
       <span class="eyebrow">03 · projects</span>
       <h2>Selected projects</h2>
-      <p>Coursework and independent builds, with the full source code on GitHub.</p>
     </div>
     <div class="project-list" id="projectGrid"></div>
   </div>
@@ -352,6 +351,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
         </div>
+        <p class="form-status" id="cfStatus" role="status" aria-live="polite"></p>
       </form>
     </div>
   </div>
@@ -388,6 +388,17 @@
     <button class="lightbox-close" data-close aria-label="Close project images">&times;</button>
     <h3 id="projectModalTitle"></h3>
     <div class="project-gallery" id="projectGallery"></div>
+  </div>
+</div>
+
+<div class="lightbox" id="alertBox" aria-hidden="true">
+  <div class="lightbox-backdrop" data-close></div>
+  <div class="lightbox-frame alert-card" role="alertdialog" aria-modal="true" aria-labelledby="alertMsg">
+    <span class="alert-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg>
+    </span>
+    <p id="alertMsg"></p>
+    <button type="button" class="btn btn-ghost" id="alertOk">OK</button>
   </div>
 </div>
 

@@ -83,10 +83,7 @@ const PROJECTS = [
       "images/projects/74e509bf-6ebc-42c1-bf20-17037e1256ab.jfif"
     ],
     role: "Project Leader, Collaborator",
-    tech: ["Python", "Django", "MySQL", "OpenCV"],
-    liveUrl: "",
-    githubUrl: "https://github.com/manarangrhomar-creator/OJT-MONITORING",
-    featured: false
+    tech: ["Python", "Django", "MySQL", "OpenCV"]
   },
   {
     title: "Satori Spa — Massage Spa Booking System",
@@ -97,10 +94,7 @@ const PROJECTS = [
       "images/projects/73693e9a-d084-4b12-b943-75f406487ee7.jfif"
     ],
     role: "Sole Developer",
-    tech: ["Python", "Django", "MariaDB", "HTML", "CSS", "JS"],
-    liveUrl: "",
-    githubUrl: "https://github.com/leboR1705/MassageSpa",
-    featured: false
+    tech: ["Python", "Django", "MariaDB", "HTML", "CSS", "JS"]
   }
 ];
 
@@ -134,9 +128,6 @@ function renderProjects(){
         <div class="tech-row">${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}</div>
         <div class="project-actions">
           <button type="button" class="project-link" data-view-project="${i}">View project <span class="arrow" aria-hidden="true">&rarr;</span></button>
-          ${p.githubUrl
-            ? `<a class="btn btn-ghost btn-sm" href="${p.githubUrl}" target="_blank" rel="noopener">GitHub</a>`
-            : `<span class="btn btn-ghost btn-sm" style="opacity:.5; cursor:not-allowed;">GitHub — add link</span>`}
         </div>
       </div>
     </article>`;
@@ -384,4 +375,87 @@ document.getElementById('certSort').addEventListener('change', renderCertificate
 
   new MutationObserver(scan).observe(document.getElementById('projectGrid'), { childList: true });
   new MutationObserver(scan).observe(document.getElementById('certGrid'), { childList: true });
+})();
+
+/* ============================================================
+   CONTACT FORM
+   Submits via fetch so the visitor stays on the page; success
+   opens a centered confirmation dialog, failures show an inline
+   error message.
+   ============================================================ */
+(function(){
+  const form = document.getElementById('contactForm');
+  if(!form) return;
+
+  const btn = document.getElementById('cfSend');
+  const status = document.getElementById('cfStatus');
+  const btnLabel = btn.innerHTML;
+
+  const ICONS = {
+    error: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5"/><path d="M12 16h.01"/></svg>'
+  };
+
+  const alertBox = document.getElementById('alertBox');
+  const alertMsg = document.getElementById('alertMsg');
+  const alertOk = document.getElementById('alertOk');
+
+  function showAlert(message){
+    alertMsg.textContent = message;
+    alertBox.classList.add('open');
+    alertBox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    alertOk.focus();
+  }
+  function closeAlert(){
+    alertBox.classList.remove('open');
+    alertBox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  alertOk.addEventListener('click', closeAlert);
+  alertBox.addEventListener('click', (e) => {
+    if(e.target.hasAttribute('data-close')) closeAlert();
+  });
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && alertBox.classList.contains('open')) closeAlert();
+  });
+
+  function setStatus(message, type){
+    if(!message){
+      status.innerHTML = '';
+      status.className = 'form-status';
+      return;
+    }
+    status.className = 'form-status ' + type;
+    status.innerHTML = ICONS[type] || '';
+    status.insertAdjacentHTML('beforeend', '<span></span>');
+    status.lastElementChild.textContent = message;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if(btn.classList.contains('loading')) return;
+
+    btn.classList.add('loading');
+    setStatus('');
+
+    try{
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if(!res.ok) throw new Error('Request failed');
+
+      form.reset();
+      showAlert('Message sent successfully.');
+    }catch(err){
+      setStatus('Your message could not be sent. Please email me directly instead.', 'error');
+    }finally{
+      btn.classList.remove('loading');
+      btn.innerHTML = btnLabel;
+    }
+  });
 })();
