@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rodel Cabanos — Resume</title>
+<meta name="robots" content="noindex">
+<style>
+  *{margin:0; padding:0; box-sizing:border-box;}
+  body{
+    font-family:'Times New Roman', Times, serif;
+    color:#000;
+    background:#fff;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+
+  .toolbar{
+    position:sticky; top:0; z-index:10;
+    display:flex; justify-content:center; gap:10px;
+    padding:12px; background:#1b1e22;
+    font-family:Arial, sans-serif;
+  }
+  .toolbar a, .toolbar button{
+    font-family:Arial, sans-serif; font-size:13px; font-weight:600;
+    color:#e8eaed; background:#2a2f36; border:1px solid #444b54;
+    padding:8px 16px; border-radius:6px; cursor:pointer; text-decoration:none;
+  }
+  .toolbar a:hover, .toolbar button:hover{border-color:#9ecbff; color:#fff;}
+
+  .paper{
+    width:216mm; height:279mm; overflow:hidden;
+    margin:20px auto 40px;
+    padding:9mm 12mm 7mm;
+    background:#fff;
+    box-shadow:0 2px 10px rgba(0,0,0,.15);
+  }
+
+  /* header */
+  .head{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:16px;
+  }
+  .head-text{flex:1;}
+  .head h1{
+    font-size:25px; font-weight:700; letter-spacing:.01em;
+    color:#000; line-height:1.05;
+  }
+  .head .title{
+    font-size:10px; font-weight:700; letter-spacing:.03em;
+    text-transform:uppercase; margin-top:6px; color:#000;
+  }
+  .head .contact{
+    font-size:9.5px; color:#000; margin-top:5px;
+    display:flex; flex-wrap:wrap; gap:2px 0;
+  }
+  .head .contact span, .head .contact a{color:#000; text-decoration:none;}
+  .head .contact .sep{margin:0 8px; color:#000;}
+  .head-photo{
+    width:28mm; height:35mm; border:1px solid #000;
+    flex-shrink:0; overflow:hidden;
+  }
+  .head-photo img{width:100%; height:100%; object-fit:cover; object-position:center top; display:block;}
+
+  .rule-double{
+    border:0; border-top:2.5px double #000;
+    margin:7px 0 0;
+  }
+
+  /* sections */
+  section{margin-top:7px;}
+  h2{
+    font-size:11px; font-weight:700; letter-spacing:.07em;
+    text-transform:uppercase; color:#000;
+    margin-bottom:3px;
+  }
+  .sec-rule{
+    border:0; border-top:1px solid #000;
+    margin:0 0 5px;
+  }
+
+  .row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    gap:10px; font-size:10px;
+  }
+  .row .left{font-weight:700; color:#000;}
+  .row .right{font-weight:400; color:#000; white-space:nowrap;}
+  .sub{
+    font-style:italic; font-size:9.5px; color:#000;
+    margin:1px 0 0;
+  }
+  ul.bullets{
+    margin:3px 0 0; padding:0;
+    list-style:none;
+  }
+  ul.bullets li{
+    font-size:9.5px; line-height:1.4; color:#000;
+    padding-left:11px; position:relative; margin-bottom:2px;
+  }
+  ul.bullets li::before{
+    content:"•"; position:absolute; left:0; color:#000;
+  }
+  .stack{
+    font-size:9.5px; margin:3px 0 0; color:#000;
+  }
+  .entry{margin-bottom:6px;}
+  .entry:last-child{margin-bottom:0;}
+  .proj-head{
+    display:flex; justify-content:space-between; align-items:baseline; gap:10px;
+    font-size:10px;
+  }
+  .proj-head .name{font-weight:700;}
+  .proj-head .when{font-weight:400; white-space:nowrap;}
+  .proj-subhead{
+    font-style:italic; font-size:10.5px; font-weight:700;
+    color:#000; margin:8px 0 4px;
+  }
+
+  /* skills table */
+  .skills-table{
+    display:grid; grid-template-columns:120px 1fr; gap:4px 12px;
+    font-size:10px;
+  }
+  .skills-table .label{font-weight:700; color:#000;}
+  .skills-table .value{color:#000;}
+
+  /* certs */
+  ul.certs{
+    margin:0; padding:0; list-style:none;
+  }
+  ul.certs li{
+    font-size:9.5px; line-height:1.45; color:#000;
+    padding-left:11px; position:relative; margin-bottom:2px;
+  }
+  ul.certs li::before{
+    content:"•"; position:absolute; left:0; color:#000;
+  }
+  ul.certs li b{font-weight:700; color:#000;}
+  ul.certs li i{font-style:italic;}
+
+  .pro-skills{
+    font-size:10px; text-align:center; color:#000;
+    margin-top:1px;
+  }
+
+  @media print{
+    .toolbar{display:none;}
+    .paper{
+      width:100%; height:auto; min-height:0; overflow:visible;
+      margin:0; box-shadow:none;
+      padding:0;
+    }
+    @page{
+      size:letter;
+      margin:9mm 12mm 7mm;
+    }
+    section{break-inside:avoid; break-after:avoid;}
+    .head, .rule-double{break-after:avoid;}
+  }
+  @media screen and (max-width:800px){
+    .paper{width:100%; height:auto; overflow:visible; margin:0; padding:16px;}
+    .head{flex-direction:column-reverse; align-items:center;}
+    .head-text{text-align:center;}
+    .head .contact{justify-content:center;}
+    .skills-table{grid-template-columns:1fr;}
+    .pro-skills{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <a href="index.html">← Back to portfolio</a>
+  <button type="button" onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<div class="paper">
+
+  <header class="head">
+    <div class="head-text">
+      <h1>Rodel Cabanos</h1>
+      <p class="title">Full-Stack Web Developer · Open to Freelance and Entry-Level Roles</p>
+      <div class="contact">
+        <span>Cauayan City, Isabela</span>
+        <span class="sep">|</span>
+        <a href="mailto:rodelcabanos737@gmail.com">rodelcabanos737@gmail.com</a>
+        <span class="sep">|</span>
+        <a href="https://github.com/leboR1705" target="_blank" rel="noopener">github.com/leboR1705</a>
+      </div>
+    </div>
+    <div class="head-photo">
+      <img src="images/profile.jpg" alt="Rodel Cabanos">
+    </div>
+  </header>
+
+  <hr class="rule-double">
+
+  <section>
+    <h2>Education</h2>
+    <hr class="sec-rule">
+    <div class="entry">
+      <div class="row">
+        <span class="left">Isabela State University — Cauayan Campus</span>
+        <span class="right">2027</span>
+      </div>
+      <p class="sub">Bachelor of Science in Information Technology</p>
+    </div>
+    <div class="entry">
+      <div class="row">
+        <span class="left">Cauayan City Stand Alone Senior High School</span>
+        <span class="right">2023</span>
+      </div>
+      <p class="sub">Senior High School</p>
+    </div>
+    <div class="entry">
+      <div class="row">
+        <span class="left">Cauayan South Central School</span>
+        <span class="right">2017</span>
+      </div>
+      <p class="sub">Elementary School</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    <hr class="sec-rule">
+    <div class="entry">
+      <div class="row">
+        <span class="left">Freelance / Project-Based Web Developer</span>
+        <span class="right">2025 – Present</span>
+      </div>
+      <ul class="bullets">
+        <li>Built responsive websites and web apps for personal projects and small clients using HTML, CSS, JavaScript, Python, and Django.</li>
+        <li>Handled back-end logic, databases, and clean UI end-to-end — from concept to deployment.</li>
+      </ul>
+    </div>
+
+    <p class="proj-subhead">Project Experience</p>
+
+    <div class="entry">
+      <div class="proj-head">
+        <span class="name">OJT Monitoring System</span>
+        <span class="when">Project Leader, Collaborator</span>
+      </div>
+      <ul class="bullets">
+        <li>Built a Django app for OJT students to log attendance via facial recognition, track time progress, and submit daily narrative reports.</li>
+        <li>Implemented a coordinator dashboard to monitor attendance, narrative reports, and overall progress.</li>
+        <li>Integrated OpenCV for camera-based facial recognition attendance.</li>
+      </ul>
+      <p class="stack"><b>Stack:</b> Python, Django, MySQL, OpenCV</p>
+    </div>
+
+    <div class="entry">
+      <div class="proj-head">
+        <span class="name">Satori Spa — Massage Spa Booking System</span>
+        <span class="when">Sole Developer</span>
+      </div>
+      <ul class="bullets">
+        <li>Developed a Django booking platform where customers browse services and book appointments online with email confirmations.</li>
+        <li>Created a staff admin dashboard to manage bookings, services, therapists, and track monthly revenue.</li>
+      </ul>
+      <p class="stack"><b>Stack:</b> Python, Django, MariaDB, HTML, CSS, JavaScript</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Technical Skills</h2>
+    <hr class="sec-rule">
+    <div class="skills-table">
+      <span class="label">Front End</span>
+      <span class="value">HTML, CSS, JavaScript</span>
+      <span class="label">Back End &amp; Database</span>
+      <span class="value">Python, Django, C++, MySQL, MariaDB, SQLite</span>
+      <span class="label">Frameworks &amp; Tools</span>
+      <span class="value">Django, Git, GitHub, OpenCV, Networking, Cybersecurity</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Certifications &amp; Training</h2>
+    <hr class="sec-rule">
+    <ul class="certs">
+      <li><b>Microsoft Cybersecurity Course: Security, Compliance, and Identity Fundamentals</b> — <i>TESDA, August 2026</i></li>
+      <li><b>Artificial Intelligence Security Summit 2026: CxO Trust</b> — <i>Cloud Security Alliance, August 2026</i></li>
+      <li><b>Networking Basics</b> — <i>Cisco Networking Academy, February 2026</i></li>
+      <li><b>Introduction to Cybersecurity</b> — <i>Cisco Networking Academy, January 2026</i></li>
+      <li><b>Cyber Threat Management</b> — <i>Cisco Networking Academy, January 2026</i></li>
+      <li><b>Information Technology Specialist — Network Security</b> — <i>Certiport, December 2025</i></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Professional Skills</h2>
+    <hr class="sec-rule">
+    <p class="pro-skills">Communication &nbsp;|&nbsp; Teamwork &nbsp;|&nbsp; Problem Solving &nbsp;|&nbsp; Leadership</p>
+  </section>
+
+</div>
+</body>
+</html>
