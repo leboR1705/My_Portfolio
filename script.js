@@ -74,7 +74,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
    ============================================================ */
 const PROJECTS = [
   {
-    title: "OJT Monitoring System",
+    title: "Capstone Project - OJT Monitoring System",
     description: "A web application that allows OJT students to log attendance using facial recognition, track their time progress, and submit daily narrative reports, while enabling the coordinator to monitor student attendance, narrative reports, and progress.",
     image: "images/projects/ojt-monitoring-system.jpg",
     images: [
