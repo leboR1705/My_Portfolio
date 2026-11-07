@@ -127,7 +127,7 @@ function renderProjects(){
         <div class="project-meta"><span><strong>Role:</strong> ${p.role}</span></div>
         <div class="tech-row">${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}</div>
         <div class="project-actions">
-          <button type="button" class="project-link" data-view-project="${i}">View project <span class="arrow" aria-hidden="true">&rarr;</span></button>
+          <a class="project-link" href="#contact">Get in touch <span class="arrow" aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
     </article>`;
