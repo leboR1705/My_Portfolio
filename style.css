@@ -483,11 +483,11 @@ select.cert-select{
 .experience-item:first-child{padding-top:0;}
 .experience-item:last-child{padding-bottom:0; border-bottom:0;}
 .experience-heading{display:flex; justify-content:space-between; align-items:baseline; gap:16px;}
-.experience-level{margin-bottom:5px; font-size:12px; color:var(--ink-faint);}
-.experience-heading h3{font-size:16px; color:var(--ink);}
-.experience-year{flex-shrink:0; font-size:13px; color:var(--ink-soft);}
-.experience-degree{margin-top:5px; font-size:14px; color:var(--ink-soft);}
-.experience-note{margin-top:5px; font-size:13px; color:var(--ink-faint);}
+.experience-level{margin-bottom:5px; font-size:13px; color:var(--ink-faint);}
+.experience-heading h3{font-size:18px; color:var(--ink);}
+.experience-year{flex-shrink:0; font-size:14px; color:var(--ink-soft);}
+.experience-degree{margin-top:6px; font-size:15px; color:var(--ink-soft);}
+.experience-note{margin-top:8px; font-size:15px; line-height:1.65; color:var(--ink-soft);}
 @media (max-width:600px){
   .experience-heading{flex-direction:column; align-items:flex-start; gap:4px;}
 }
@@ -511,7 +511,7 @@ select.cert-select{
    CONTACT
    ============================================================ */
 .contact-layout{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;}
-#contact{padding-top:8px;}
+#contact{padding-top:44px;}
 .contact-aside{display:flex; flex-direction:column; gap:20px;}
 .contact-grid{display:flex; flex-direction:column;}
 .contact-card{
@@ -632,7 +632,7 @@ footer .fsocial a{
 }
 footer .fsocial a:hover{border-color:var(--accent); color:var(--accent);}
 footer .fsocial svg{width:16px; height:16px;}
-footer .copy{font-size:12.5px; color:var(--ink-faint); width:100%; padding-top:20px; border-top:1px solid var(--line); margin-top:16px;}
+footer .copy{font-size:12.5px; color:var(--ink-faint);}
 
 @media (max-width:600px){
   section{padding:32px 0 40px;}
