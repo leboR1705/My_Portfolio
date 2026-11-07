@@ -83,7 +83,8 @@ const PROJECTS = [
       "images/projects/74e509bf-6ebc-42c1-bf20-17037e1256ab.jfif"
     ],
     role: "Project Leader, Collaborator",
-    tech: ["Python", "Django", "MySQL", "OpenCV"]
+    tech: ["Python", "Django", "MySQL", "OpenCV"],
+    liveUrl: "https://isabelacolleges-ojtms.online/"
   },
   {
     title: "Satori Spa — Massage Spa Booking System",
@@ -94,7 +95,8 @@ const PROJECTS = [
       "images/projects/73693e9a-d084-4b12-b943-75f406487ee7.jfif"
     ],
     role: "Sole Developer",
-    tech: ["Python", "Django", "MariaDB", "HTML", "CSS", "JS"]
+    tech: ["Python", "Django", "MariaDB", "HTML", "CSS", "JS"],
+    githubUrl: "https://github.com/leboR1705/MassageSpa"
   }
 ];
 
@@ -127,7 +129,9 @@ function renderProjects(){
         <div class="project-meta"><span><strong>Role:</strong> ${p.role}</span></div>
         <div class="tech-row">${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}</div>
         <div class="project-actions">
-          <a class="project-link" href="#contact">Get in touch <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          <button type="button" class="project-link" data-view-project="${i}">View project <span class="arrow" aria-hidden="true">&rarr;</span></button>
+          ${p.liveUrl ? `<a class="btn btn-ghost btn-sm" href="${p.liveUrl}" target="_blank" rel="noopener">View live site</a>` : ''}
+          ${p.githubUrl ? `<a class="btn btn-ghost btn-sm" href="${p.githubUrl}" target="_blank" rel="noopener">View repository</a>` : ''}
         </div>
       </div>
     </article>`;
@@ -179,11 +183,20 @@ renderProjects();
    ============================================================ */
 const CERTIFICATES = [
   {
+    title: "Information Technology Specialist — Network Security",
+    issuer: "Certiport",
+    date: "2025-12-08",
+    certificateNumber: "wn8Cz-48eN",
+    verificationUrl: "https://www.certiport.com/portal/pages/credentialverification.aspx",
+    certificateFile: "certificates/Information%20Technology%20Specialist.pdf",
+    image: "images/cert-information-technology-specialist.png"
+  },
+  {
     title: "AI Security Summit 2026: CxO Trust",
     issuer: "Cloud Security Alliance",
     date: "2026-08-19",
     certificateNumber: "N/A",
-    verificationUrl: "https://example.com",
+    verificationUrl: "https://cloudsecurityalliance.org/cxo-trust",
     certificateFile: "certificates/AI%20Security%20Summit%20Certificate.pdf",
     image: "images/cert-ai-security-summit.png"
   },
@@ -222,15 +235,6 @@ const CERTIFICATES = [
     verificationUrl: "https://www.credly.com/badges/efdae50b-9ab8-42bf-829b-a9a9326f5af9",
     certificateFile: "certificates/Cyber_Threat_Management_certificate.pdf",
     image: "images/cert-cyber-threat-management-certificate.png"
-  },
-  {
-    title: "Information Technology Specialist — Network Security",
-    issuer: "Certiport",
-    date: "2025-12-08",
-    certificateNumber: "wn8Cz-48eN",
-    verificationUrl: "https://www.certiport.com/portal/pages/credentialverification.aspx",
-    certificateFile: "certificates/Information%20Technology%20Specialist.pdf",
-    image: "images/cert-information-technology-specialist.png"
   }
 ];
 
@@ -263,8 +267,8 @@ function renderCertificates(){
   });
 
   list.sort((a,b) => {
-    if(sort === 'date-desc') return new Date(b.date) - new Date(a.date);
-    if(sort === 'date-asc') return new Date(a.date) - new Date(b.date);
+    if(sort === 'default') return 0;
+    if(sort === 'date-desc') return new Date(b.date) - new Date(a.date);    if(sort === 'date-asc') return new Date(a.date) - new Date(b.date);
     if(sort === 'title-asc') return a.title.localeCompare(b.title);
     return 0;
   });
